@@ -1,0 +1,11 @@
+dist
+node_modules
+npm-debug.log*
+debug.log
+.DS_Store
+.idea
+api/config.js
+config/*
+!config/default.js
+!config/dev.js
+/tmp
