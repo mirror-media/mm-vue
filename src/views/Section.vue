@@ -76,7 +76,7 @@
       }
     },
 
-    created() {
+    mounted() {
       if (this.title) {
         this.fetchData('/sections?where={"name":"' + this.title + '"}').then(
           response => {
@@ -100,12 +100,10 @@
     prefetch(route, store) {
       return Promise.all([
         new Promise(resolve => {
-          setTimeout(() => {
-            resolve({
-              title: route.params.title,
-              description: 'description async loaded',
-              id: route.params.title
-            })
+          resolve({
+            title: route.params.title,
+            description: 'description async loaded',
+            id: route.params.title
           })
         }),
         store.dispatch('asyncIncrement')

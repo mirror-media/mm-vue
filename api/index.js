@@ -11,7 +11,15 @@ redisClient.on('connect', function () {
   console.log('Connected to Redis', apiHost)
 })
 
+router.all('/', function(req, res, next) {
+
+  next()
+ });
+
 router.get('*', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
+  console.log(apiHost)
   console.log(decodeURIComponent(req.url))
   redisClient.get(decodeURIComponent(req.url), function (err, data) {
     try {

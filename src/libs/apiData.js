@@ -3,13 +3,17 @@ export default {
     fetchData(url) {
       const superagent = require('superagent')
 
-      const apiHost = 'http://localhost:8200/api'
+      const apiHost = 'http://127.0.0.1:8200/api'
 
       return new Promise(resolve => {
         superagent
         .get(apiHost + url)
         .end((err, response) => {
-          resolve(JSON.parse(response.text))
+          if (!err && response) {
+            resolve(JSON.parse(response.text))
+          } else {
+            resolve('{\'error\':' + err + '}')
+          }
         })
       })
     }
