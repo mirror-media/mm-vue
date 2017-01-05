@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-      <img :src="content.heroImage.image.resizedTargets.mobile.url" alt="Avatar" style="width:100%">
+      <div class="heroImg" :style="{ background: 'url('+content.heroImage.image.resizedTargets.mobile.url+') 50% 50% no-repeat / cover', backgroundSize: 'cover'}"></div>
       <div class="container">
         <h4>{{ content.title }}</h4> 
         <p>{{ content.publishedDate }}</p>
@@ -9,11 +9,16 @@
 </template>
 
 <style scoped>
+    .card .heroImg {
+        width:300px;
+        height:250px;
+    }
     .card {
         background-color: #FFF;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         margin: 10px;
-        width: 350px;
+        width: 300px;
+        min-height: 300px;
         transition: 0.3s;
     }
 

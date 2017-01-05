@@ -80,7 +80,7 @@
       if (this.title) {
         this.fetchData('/sections?where={"name":"' + this.title + '"}').then(
           response => {
-            this.fetchData('/posts?where={"sections":"' + response._items[0]._id + '"}').then(
+            this.fetchData('/posts?where={"sections":"' + response._items[0]._id + '"}&sort=-publishedDate').then(
               response => {
                 this.rep = response
                 // console.log('Success!', response) //eslint-disable-line
@@ -124,7 +124,6 @@
               this.fetchData('/posts?where={"sections":"' + response._items[0]._id + '"}&sort=-publishedDate').then(
                 response => {
                   this.rep = response
-                  // console.log('Success!', response) //eslint-disable-line
                 },
                 error => {
                   console.error('Failed!', error) //eslint-disable-line
